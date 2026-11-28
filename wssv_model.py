@@ -297,18 +297,18 @@ def word_influence(model: Pipeline, text: str) -> list[tuple[str, float | None]]
 
 SYMPTOMS: list[tuple[str, str, str]] = [
     # (key, label, regex)
-    ("white_spots", "White spots or patches on the shell", r"white\s+(spots?|patch(es)?|specks?|dots?)"),
+    ("white_spots", "White spots or patches on the shell", r"white\s+(spots?|patch(es)?|specks?|dots?|marks?|circles?)"),
     ("red_colour", "Reddish or pink body colour", r"\b(red|reddish|pink|pinkish)\b"),
-    ("discolour", "Faded, opaque or abnormal body colour", r"\b(opaque|faded|pale|discolou?r\w*|darkened|whitish)\b"),
+    ("discolour", "Faded, opaque or abnormal body colour", r"\b(opaque|faded|pale|discolou?r\w*|darkened|whitish|milky|chalky|cloudy\s+body|dull\s+colou?r)\b"),
     ("soft_shell", "Soft or loose shell", r"soft(en\w*)?\s*(-\s*)?shells?|shells?\s+(are|is|become|becomes)?\s*(very\s+)?(soft|loose)|loose\s+(shell|cuticle)|shell[\s-]+meat\s+separation|softening"),
-    ("lethargy", "Weak, sluggish or lethargic", r"\b(letharg\w*|sluggish|weak\w*|inactive|listless)\b|reduced\s+(activity|swimming)"),
-    ("feeding", "Reduced feeding or loss of appetite", r"(loss\s+of|reduced|poor|less|low)\s+(appetite|feeding|feed\s+intake)|not\s+(eating|feeding)|stop\w*\s+(eating|feeding)|reluctan\w*\s+to\s+feed|empty\s+gut|off\s+feed"),
-    ("swimming", "Abnormal swimming (erratic, at surface or pond edge)", r"\berratic\b|swim\w*\s+(near|at|on|along|to)\s+(the\s+)?(water\s+|pond\s+)?(surface|edge|edges|bank|banks|side|sides|dyke)|without\s+orientation|in\s+circles|spiral\w*|spinning|tumbling"),
-    ("mortality", "Mortality or sudden deaths", r"mortalit\w*|\bdying\b|\bdead\b|\bdie\b|\bdied\b|die[\s-]?off|mass\s+death"),
-    ("moulting", "Moulting problems", r"(can\s*not|cannot|can't|unable\s+to|fail\w*\s+to|abnormal|incomplete|unsuccessful)\s+(to\s+)?mou?lt\w*"),
+    ("lethargy", "Weak, sluggish or lethargic", r"\b(letharg\w*|sluggish|weak\w*|inactive|listless|lazy|dull)\b|reduced\s+(activity|swimming)|(not|less|hardly)\s+active|(very|too|moving)\s+slow(ly)?|slow\s+(and|moving|movement)"),
+    ("feeding", "Reduced feeding or loss of appetite", r"(loss\s+of|reduced|poor|less|low|no)\s+(appetite|feeding|feed\s+intake)|(not|no\s+longer|hardly)\s+(eating|feeding)|stop\w*\s+(eating|feeding)|reluctan\w*\s+to\s+feed|empty\s+(gut|guts|stomach)|(gut|guts|stomach)\s+(is|are|look|looks)\s+empty|off\s+(feed|food)|feed\s+(is\s+)?(left|remaining|uneaten)|uneaten\s+feed"),
+    ("swimming", "Abnormal swimming (erratic, at surface or pond edge)", r"\berratic\b|(swim\w*|float\w*|gather\w*|crowd\w*|congregat\w*|com\w*\s+up)\s+(near|at|on|along|to|by)\s+(the\s+)?(water\s+|pond\s+)?(surface|edge|edges|bank|banks|side|sides|dyke|corner|corners)|\bfloat(ing|s)?\b|without\s+orientation|in\s+circles|spiral\w*|spinning|tumbling"),
+    ("mortality", "Mortality or sudden deaths", r"mortalit\w*|\bdying\b|\bdead\b|\bdie[sd]?\b|die[\s-]?off|\bdeaths?\b|mass\s+death|heavy\s+loss(es)?"),
+    ("moulting", "Moulting problems", r"(can\s*not|cannot|can't|unable\s+to|fail\w*\s+to|abnormal|incomplete|unsuccessful|failed|problems?\s+(with|in))\s+(to\s+)?mou?lt\w*|mou?lt\w*\s+(is\s+|are\s+|has\s+)?(fail\w*|incomplete|abnormal|stuck|not\s+complet\w*)|stuck\s+in\s+(the\s+|their\s+)?(old\s+)?shells?"),
     ("necrosis", "Necrosis or dead tissue", r"necro\w*"),
     ("hepatopancreas", "Hepatopancreas abnormality", r"hepatopancreas"),
-    ("posture", "Raised head or abnormal posture", r"rais\w*\s+(their\s+|its\s+)?heads?|arching|hunching|abnormal\s+(body\s+)?posture"),
+    ("posture", "Raised head or abnormal posture", r"rais\w*\s+(their\s+|its\s+)?heads?|\barching\b|\bhunching\b|abnormal\s+(body\s+)?posture"),
     ("growth", "Slow growth or weight loss", r"slow\s+growth|stunted|emaciat\w*|reduced\s+body\s+weight|weight\s+loss"),
 ]
 
